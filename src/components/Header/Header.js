@@ -5,6 +5,7 @@ const Brand = styled.header`
   position: absolute;
   top: 1em;
   left: 1em;
+  font-size: 1.4em;
 `
 
 const Header = () => (
