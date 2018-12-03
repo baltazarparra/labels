@@ -31,15 +31,18 @@ const ActionButton = styled.button`
     background-color: #ebebeb;
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
   }
+  &:focus {
+    outline: 0;
+  }
 `
 
-const Main = () => (
+const Main = ({handleSearch}) => (
   <MainWraper>
     <label>
       https://github.com/
       <SearchInput placeholder="username" />
     </label>
-    <ActionButton>get repositories ▸</ActionButton>
+    <ActionButton onClick={handleSearch}>get repositories ▸</ActionButton>
   </MainWraper>
 )
 

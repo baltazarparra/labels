@@ -1,7 +1,9 @@
 import React from 'react'
 import Header from './Header/Header'
 import Main from './Main/Main'
+import Loading from './Main/Loading'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 const Wraper = styled.div`
   display: flex;
@@ -10,11 +12,17 @@ const Wraper = styled.div`
   min-height: 100vh;
 `
 
-const AppContent = () => (
+const AppContent = ({loading, loaded, handleSearch}) => (
   <Wraper>
     <Header />
-    <Main />
+    {!loading && <Main handleSearch={handleSearch} />}
+    {loading && !loaded && <Loading />}
   </Wraper>
 )
+
+AppContent.Proptypes = {
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired
+}
 
 export default AppContent
