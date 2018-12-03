@@ -1,9 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const Brand = styled.header`
+  position: absolute;
+  top: 1em;
+  left: 1em;
+`
 
 const Header = () => (
-  <header>
+  <Brand>
     <h1>Labels</h1>
-  </header>
+  </Brand>
 )
 
 export default Header
