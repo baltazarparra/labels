@@ -6,14 +6,13 @@ class App extends Component {
       <div className="App">
         <header>
           <h1>Labels</h1>
-          <a href="/">Home</a>
         </header>
         <main>
           <label>
-            github.com/
-            <input placeholder="username..." />
+            https://github.com/
+            <input placeholder="username" />
           </label>
-          <button>Search repos</button>
+          <button>get repositories ▶</button>
         </main>
       </div>
     )
