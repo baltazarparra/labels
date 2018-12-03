@@ -26,6 +26,11 @@ const ActionButton = styled.button`
   box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.75);
   border-radius: 155px 15px 225px 15px/15px 205px 15px 255px;
   border:solid 4px #41403E;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  &:hover {
+    background-color: #ebebeb;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+  }
 `
 
 const Main = () => (
@@ -34,7 +39,7 @@ const Main = () => (
       https://github.com/
       <SearchInput placeholder="username" />
     </label>
-    <ActionButton>get repositories ▶</ActionButton>
+    <ActionButton>get repositories ▸</ActionButton>
   </MainWraper>
 )
 
