@@ -1,10 +1,14 @@
 import React from 'react'
+import Header from './Header/Header'
+import styled from 'styled-components'
+
+const Wraper = styled.div`
+  display: flex;
+`
 
 const AppContent = () => (
-  <div>
-    <header>
-      <h1>Labels</h1>
-    </header>
+  <Wraper>
+    <Header />
     <main>
       <label>
       https://github.com/
@@ -12,7 +16,7 @@ const AppContent = () => (
       </label>
     <button>get repositories ▶</button>
     </main>
-  </div>
+  </Wraper>
 )
 
 export default AppContent
