@@ -25,9 +25,13 @@ const TableData = styled.table`
   td {
     padding: .4em;
   }
+
+  button {
+    background-color: none;
+  }
 `
 
-const Table = () => (
+const Table = ({openModal}) => (
   <TableData>
     <tbody>
       <tr>
@@ -56,7 +60,7 @@ const Table = () => (
         <td>Javascript</td>
         <td></td>
         <td>
-          <a href="/">edit</a>
+          <button onClick={openModal}>edit</button>
         </td>
       </tr>
       <tr>

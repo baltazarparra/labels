@@ -6,7 +6,8 @@ class App extends Component {
     super()
     this.state = {
       loading: false,
-      loaded: false
+      loaded: false,
+      taging: false
     }
   }
 
@@ -21,12 +22,22 @@ class App extends Component {
     }, 2000)
   }
 
+  openModal = () => {
+    this.setState({taging: true})
+  }
+
+  closeModal = () => {
+    this.setState({taging: false})
+  }
+
   render() {
     return (
       <div className="App">
         <AppContent
           {...this.state}
           handleSearch={this.handleSearch}
+          openModal={this.openModal}
+          closeModal={this.closeModal}
         />
       </div>
     )
