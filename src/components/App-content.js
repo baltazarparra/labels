@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './Header/Header'
+import SearchRepo from './Header/SearchRepo'
 import Main from './Main/Main'
 import Loading from './Main/Loading'
 import Table from './Main/Table'
@@ -20,6 +21,7 @@ const AppContent = ({loading, loaded, taging, handleSearch, openModal, closeModa
     {!loading && <Main handleSearch={handleSearch} />}
     {loading && !loaded && <Loading />}
     {loaded && <Table openModal={openModal} />}
+    {loaded && <SearchRepo />}
     {taging && <Modal closeModal={closeModal} />}
   </Wraper>
 )
