@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -65,5 +66,9 @@ const Modal = ({closeModal}) => (
     </div>
   </ModalWrapper>
 )
+
+Modal.Proptypes = {
+  closeModal: PropTypes.func.isRequired
+}
 
 export default Modal

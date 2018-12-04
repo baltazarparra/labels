@@ -26,7 +26,11 @@ const AppContent = ({loading, loaded, taging, handleSearch, openModal, closeModa
 
 AppContent.Proptypes = {
   loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired
+  loaded: PropTypes.bool.isRequired,
+  taging: PropTypes.bool.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired
 }
 
 export default AppContent

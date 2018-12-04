@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 const MainWraper = styled.main`
   font-size: 1.4em;
@@ -45,5 +46,9 @@ const Main = ({handleSearch}) => (
     <ActionButton onClick={handleSearch}>get repositories ▸</ActionButton>
   </MainWraper>
 )
+
+Main.Proptypes = {
+  handleSearch: PropTypes.func.isRequired
+}
 
 export default Main
