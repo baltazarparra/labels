@@ -16,9 +16,9 @@ const Wraper = styled.div`
 const AppContent = ({loading, loaded, handleSearch}) => (
   <Wraper>
     <Header />
-    {!loading && <Main handleSearch={handleSearch} />}
-    {loading && !loaded && <Loading />}
-    {loaded && <Table />}
+    {false && <Main handleSearch={handleSearch} />}
+    {false && <Loading />}
+    {true && <Table />}
   </Wraper>
 )
 

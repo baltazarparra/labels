@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const MainWraper = styled.main`
-  font-size: 1.2em;
+  font-size: 1.4em;
 `
 
 const SearchInput = styled.input`
