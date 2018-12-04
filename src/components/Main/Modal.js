@@ -23,7 +23,7 @@ const ModalWrapper = styled.div`
 
   input {
     display: block;
-    width: 300px;
+    width: 400px;
     border-radius: 6px 4px 9px 4px/110px 95px 115px 5px;
     border:solid 2px #41403E;
     margin: .4em 0;
@@ -35,7 +35,7 @@ const ModalWrapper = styled.div`
   }
 
   button:first-child {
-    background-color: SkyBlue;
+    background-color: #95bcf2;
   }
 
   button {

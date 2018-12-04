@@ -28,7 +28,14 @@ const TableData = styled.table`
   }
 
   button {
-    background-color: none;
+    color: #0000cc;
+    font-size: 1em;
+    background: none;
+    border: 0;
+    text-decoration: underline;
+    &:focus {
+      outline: 0;
+    }
   }
 `
 
@@ -50,7 +57,7 @@ const Table = ({openModal}) => (
         <td>Javascript</td>
         <td></td>
         <td>
-          <a href="/">edit</a>
+          <button onClick={openModal}>edit</button>
         </td>
       </tr>
       <tr>
@@ -72,7 +79,7 @@ const Table = ({openModal}) => (
         <td>Javascript</td>
         <td></td>
         <td>
-          <a href="/">edit</a>
+          <button onClick={openModal}>edit</button>
         </td>
       </tr>
       <tr>
@@ -83,7 +90,7 @@ const Table = ({openModal}) => (
         <td>Javascript</td>
         <td></td>
         <td>
-          <a href="/">edit</a>
+          <button onClick={openModal}>edit</button>
         </td>
       </tr>
       <tr>
@@ -94,7 +101,7 @@ const Table = ({openModal}) => (
         <td>Javascript</td>
         <td></td>
         <td>
-          <a href="/">edit</a>
+          <button onClick={openModal}>edit</button>
         </td>
       </tr>
     </tbody>
