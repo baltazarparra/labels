@@ -7,19 +7,29 @@ class App extends Component {
     this.state = {
       loading: false,
       loaded: false,
-      taging: false
+      taging: false,
+      starred: []
     }
   }
 
   handleSearch = () => {
     this.setState({loading: true})
-    return this.handleLoaded()
-  }
-
-  handleLoaded = () => {
-    setTimeout(() => {
-      this.setState({loaded: true})
-    }, 2000)
+    fetch('https://api.github.com/users/baltazarparra/starred')
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          starred: response.map((item) => {
+            return {
+              name: item.name,
+              link: item.html_url,
+              description: item.description,
+              language: item.language
+            }
+          })
+        }, () => {
+          this.setState({ loading: false, loaded: true })
+        })
+      }).catch(err => console.error(err))
   }
 
   openModal = () => {

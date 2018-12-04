@@ -39,7 +39,7 @@ const TableData = styled.table`
   }
 `
 
-const Table = ({openModal}) => (
+const Table = ({openModal, starred}) => (
   <TableData>
     <tbody>
       <tr>
@@ -60,56 +60,22 @@ const Table = ({openModal}) => (
           <button onClick={openModal}>edit</button>
         </td>
       </tr>
-      <tr>
-        <td>
-          <a href="/">jest</a>
-        </td>
-        <td>Delighful Javascripting Testing.</td>
-        <td>Javascript</td>
-        <td></td>
-        <td>
-          <button onClick={openModal}>edit</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="/">jest</a>
-        </td>
-        <td>Delighful Javascripting Testing.</td>
-        <td>Javascript</td>
-        <td></td>
-        <td>
-          <button onClick={openModal}>edit</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="/">jest</a>
-        </td>
-        <td>Delighful Javascripting Testing.</td>
-        <td>Javascript</td>
-        <td></td>
-        <td>
-          <button onClick={openModal}>edit</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="/">jest</a>
-        </td>
-        <td>Delighful Javascripting Testing.</td>
-        <td>Javascript</td>
-        <td></td>
-        <td>
-          <button onClick={openModal}>edit</button>
-        </td>
-      </tr>
+      {starred.map((repo, index) => (
+        <tr key={index}>
+          <td>
+            <a href={repo.link}>{repo.name}</a>
+          </td>
+          <td>{repo.description}</td>
+          <td>{repo.language}</td>
+        </tr>
+      ))}
     </tbody>
   </TableData>
 )
 
 Table.Proptypes = {
-  openModal: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired,
+  starred: PropTypes.array.isRequired
 }
 
 export default Table

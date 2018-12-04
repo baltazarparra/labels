@@ -15,12 +15,12 @@ const Wraper = styled.div`
   min-height: 100vh;
 `
 
-const AppContent = ({loading, loaded, taging, handleSearch, openModal, closeModal}) => (
+const AppContent = ({loading, loaded, taging, handleSearch, openModal, closeModal, starred}) => (
   <Wraper>
     <Header />
-    {!loading && <Main handleSearch={handleSearch} />}
+    {!loading && !loaded && <Main handleSearch={handleSearch} />}
     {loading && !loaded && <Loading />}
-    {loaded && <Table openModal={openModal} />}
+    {loaded && <Table starred={starred} openModal={openModal} />}
     {loaded && <SearchRepo />}
     {taging && <Modal closeModal={closeModal} />}
   </Wraper>
@@ -32,7 +32,8 @@ AppContent.Proptypes = {
   taging: PropTypes.bool.isRequired,
   handleSearch: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
+  starred: PropTypes.array.isRequired
 }
 
 export default AppContent
