@@ -10,15 +10,16 @@ import PropTypes from 'prop-types';
 
 const Wraper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   min-height: 100vh;
 `
 
-const AppContent = ({loading, loaded, taging, handleSearch, openModal, closeModal, starred}) => (
+const AppContent = ({loading, loaded, taging, handleSearch, getUsername, openModal, closeModal, starred}) => (
   <Wraper>
     <Header />
-    {!loading && !loaded && <Main handleSearch={handleSearch} />}
+    {!loading && !loaded && <Main getUsername={getUsername} handleSearch={handleSearch} />}
     {loading && !loaded && <Loading />}
     {loaded && <Table starred={starred} openModal={openModal} />}
     {loaded && <SearchRepo />}

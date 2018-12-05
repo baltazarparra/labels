@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const MainWraper = styled.main`
+  flex: 1;
   font-size: 1.4em;
 `
 
@@ -37,11 +38,11 @@ const ActionButton = styled.button`
   }
 `
 
-const Main = ({handleSearch}) => (
+const Main = ({handleSearch, getUsername}) => (
   <MainWraper>
     <label>
       https://github.com/
-      <SearchInput placeholder="username" />
+      <SearchInput onChange={getUsername} placeholder="username" />
     </label>
     <ActionButton onClick={handleSearch}>get repositories ▸</ActionButton>
   </MainWraper>

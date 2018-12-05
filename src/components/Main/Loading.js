@@ -9,6 +9,11 @@ const move = keyframes`
     background-position: 28px 0;
   }
 `
+
+const LoadBar = styled.div`
+  position: absolute;
+`
+
 const LoaderBar = styled.span`
   display: block;
   margin: 1em;
@@ -30,10 +35,10 @@ const LoaderBar = styled.span`
 `
 
 const Loading = () => (
-  <div>
+  <LoadBar>
     <LoaderBar></LoaderBar>
     <p>Getting the repositories list from Github...</p>
-  </div>
+  </LoadBar>
 )
 
 export default Loading

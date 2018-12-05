@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const TableData = styled.table`
-  width: 100%;
-  margin: 2em;
+  margin: 3em 2em;
   table-layout: fixed;
   font-size: 1.4em;
   text-align: left;

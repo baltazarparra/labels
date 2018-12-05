@@ -1,24 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Brand = styled.h1`
-  position: absolute;
-  top: 1em;
-  left: 1em;
+const Head = styled.header`
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 2em;
+
+  h1 {
+    flex: 1;
+  }
 `
 
 const HomeLink = styled.a`
-  position: absolute;
-  top: 2em;
-  right: 2em;
+  flex: 1;
   font-size: 1.4em;
+  text-align: right;
 `
 
 const Header = () => (
-  <header>
-    <Brand>Labels</Brand>
+  <Head>
+    <h1>Labels</h1>
     <HomeLink href="/">home</HomeLink>
-  </header>
+  </Head>
 )
 
 export default Header

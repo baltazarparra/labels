@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const ModalWrapper = styled.div`
   position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,6 +29,9 @@ const ModalWrapper = styled.div`
     border:solid 2px #41403E;
     margin: .4em 0;
     height: 30px;
+    &:focus {
+      outline: 0;
+    }
   }
 
   span {

@@ -8,13 +8,26 @@ class App extends Component {
       loading: false,
       loaded: false,
       taging: false,
+      username: '',
       starred: []
     }
   }
 
-  handleSearch = () => {
+  getUsername = (e) => {
+    const input = e.target
+    let timeout = null
+    input.onkeyup = () => {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        this.setState({username: input.value})
+      }, 1400)
+    }
+  }
+
+  handleSearch = (e) => {
     this.setState({loading: true})
-    fetch('https://api.github.com/users/baltazarparra/starred')
+    let user = this.state.username
+    fetch(`https://api.github.com/users/${user}/starred`)
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -46,6 +59,7 @@ class App extends Component {
         <AppContent
           {...this.state}
           handleSearch={this.handleSearch}
+          getUsername={this.getUsername}
           openModal={this.openModal}
           closeModal={this.closeModal}
         />
