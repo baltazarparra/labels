@@ -16,10 +16,10 @@ const Wraper = styled.div`
   min-height: 100vh;
 `
 
-const AppContent = ({loading, loaded, taging, handleSearch, getUsername, openModal, closeModal, starred}) => (
+const AppContent = ({loading, loaded, taging, username, notFound, handleSearch, getUsername, openModal, closeModal, starred}) => (
   <Wraper>
     <Header />
-    {!loading && !loaded && <Main getUsername={getUsername} handleSearch={handleSearch} />}
+    {!loading && !loaded && <Main username={username} notFound={notFound} getUsername={getUsername} handleSearch={handleSearch} />}
     {loading && !loaded && <Loading />}
     {loaded && <Table starred={starred} openModal={openModal} />}
     {loaded && <SearchRepo />}

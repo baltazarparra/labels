@@ -46,18 +46,7 @@ const Table = ({openModal, starred}) => (
         <th>Description</th>
         <th>Language</th>
         <th>Tags</th>
-        <th> </th>
-      </tr>
-      <tr>
-        <td>
-          <a href="/">jest</a>
-        </td>
-        <td>Delighful Javascripting Testing.</td>
-        <td>Javascript</td>
-        <td></td>
-        <td>
-          <button onClick={openModal}>edit</button>
-        </td>
+        <th></th>
       </tr>
       {starred.map((repo, index) => (
         <tr key={index}>
@@ -66,6 +55,10 @@ const Table = ({openModal, starred}) => (
           </td>
           <td>{repo.description}</td>
           <td>{repo.language}</td>
+          <td></td>
+          <td>
+            <button onClick={openModal}>edit</button>
+          </td>
         </tr>
       ))}
     </tbody>

@@ -9,6 +9,7 @@ class App extends Component {
       loaded: false,
       taging: false,
       username: '',
+      notFound: false,
       starred: []
     }
   }
@@ -25,7 +26,7 @@ class App extends Component {
   }
 
   handleSearch = (e) => {
-    this.setState({loading: true})
+    this.setState({loading: true, notFound: false})
     let user = this.state.username
     fetch(`https://api.github.com/users/${user}/starred`)
       .then(response => response.json())
@@ -42,7 +43,10 @@ class App extends Component {
         }, () => {
           this.setState({ loading: false, loaded: true })
         })
-      }).catch(err => console.error(err))
+      }).catch(err => {
+        this.setState({loading: false, notFound: true, username: ''})
+        console.error(err)}
+      )
   }
 
   openModal = () => {

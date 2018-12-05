@@ -5,6 +5,11 @@ import PropTypes from 'prop-types';
 const MainWraper = styled.main`
   flex: 1;
   font-size: 1.4em;
+
+  p {
+    color: red;
+    text-align: center;
+  }
 `
 
 const SearchInput = styled.input`
@@ -36,15 +41,22 @@ const ActionButton = styled.button`
   &:focus {
     outline: 0;
   }
+  &:disabled {
+    background-color: #ebebeb;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    border-color: silver;
+    color: silver;
+  }
 `
 
-const Main = ({handleSearch, getUsername}) => (
+const Main = ({username, notFound, handleSearch, getUsername}) => (
   <MainWraper>
     <label>
       https://github.com/
       <SearchInput onChange={getUsername} placeholder="username" />
     </label>
-    <ActionButton onClick={handleSearch}>get repositories ▸</ActionButton>
+    <ActionButton disabled={!username} onClick={handleSearch}>get repositories ▸</ActionButton>
+    {notFound && <p>User not found, check and try again</p>}
   </MainWraper>
 )
 
