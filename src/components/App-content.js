@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header/Header'
-import SearchRepo from './Header/SearchRepo'
+import SearchTag from './Header/SearchTag'
 import Main from './Main/Main'
 import Loading from './Main/Loading'
 import Table from './Main/Table'
@@ -16,13 +16,29 @@ const Wraper = styled.div`
   min-height: 100vh;
 `
 
-const AppContent = ({loading, loaded, taging, username, notFound, handleSearch, getUsername, openModal, closeModal, starred}) => (
+const AppContent = ({
+    loading,
+    loaded,
+    taging,
+    username,
+    userNotFound,
+    starredList,
+    getUsername,
+    handleSearch,
+    openModal,
+    closeModal}) => (
   <Wraper>
     <Header />
-    {!loading && !loaded && <Main username={username} notFound={notFound} getUsername={getUsername} handleSearch={handleSearch} />}
+    {!loading && !loaded &&
+    <Main
+      username={username}
+      userNotFound={userNotFound}
+      getUsername={getUsername}
+      handleSearch={handleSearch}
+    />}
     {loading && !loaded && <Loading />}
-    {loaded && <Table starred={starred} openModal={openModal} />}
-    {loaded && <SearchRepo />}
+    {loaded && <Table starredList={starredList} openModal={openModal} />}
+    {loaded && <SearchTag />}
     {taging && <Modal closeModal={closeModal} />}
   </Wraper>
 )
@@ -31,10 +47,13 @@ AppContent.Proptypes = {
   loading: PropTypes.bool.isRequired,
   loaded: PropTypes.bool.isRequired,
   taging: PropTypes.bool.isRequired,
+  username: PropTypes.string.isRequired,
+  userNotFound: PropTypes.bool.isRequired,
+  getUsername: PropTypes.func.isRequired,
+  starredList: PropTypes.array.isRequired,
   handleSearch: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  starred: PropTypes.array.isRequired
+  closeModal: PropTypes.func.isRequired
 }
 
 export default AppContent

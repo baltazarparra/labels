@@ -38,7 +38,7 @@ const TableData = styled.table`
   }
 `
 
-const Table = ({openModal, starred}) => (
+const Table = ({openModal, starredList}) => (
   <TableData>
     <tbody>
       <tr>
@@ -48,7 +48,7 @@ const Table = ({openModal, starred}) => (
         <th>Tags</th>
         <th></th>
       </tr>
-      {starred.map((repo, index) => (
+      {starredList.map((repo, index) => (
         <tr key={index}>
           <td>
             <a href={repo.link}>{repo.name}</a>
@@ -67,7 +67,7 @@ const Table = ({openModal, starred}) => (
 
 Table.Proptypes = {
   openModal: PropTypes.func.isRequired,
-  starred: PropTypes.array.isRequired
+  starredList: PropTypes.array.isRequired
 }
 
 export default Table

@@ -9,8 +9,8 @@ class App extends Component {
       loaded: false,
       taging: false,
       username: '',
-      notFound: false,
-      starred: []
+      userNotFound: false,
+      starredList: []
     }
   }
 
@@ -26,13 +26,13 @@ class App extends Component {
   }
 
   handleSearch = (e) => {
-    this.setState({loading: true, notFound: false})
+    this.setState({loading: true, userNotFound: false})
     let user = this.state.username
     fetch(`https://api.github.com/users/${user}/starred`)
       .then(response => response.json())
       .then(response => {
         this.setState({
-          starred: response.map((item) => {
+          starredList: response.map((item) => {
             return {
               name: item.name,
               link: item.html_url,
@@ -44,7 +44,7 @@ class App extends Component {
           this.setState({ loading: false, loaded: true })
         })
       }).catch(err => {
-        this.setState({loading: false, notFound: true, username: ''})
+        this.setState({loading: false, userNotFound: true, username: ''})
         console.error(err)}
       )
   }
@@ -62,8 +62,8 @@ class App extends Component {
       <div className="App">
         <AppContent
           {...this.state}
-          handleSearch={this.handleSearch}
           getUsername={this.getUsername}
+          handleSearch={this.handleSearch}
           openModal={this.openModal}
           closeModal={this.closeModal}
         />
