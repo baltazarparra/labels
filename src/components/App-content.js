@@ -27,7 +27,7 @@ const AppContent = ({
     handleSearch,
     openModal,
     closeModal,
-    repoName,
+    repoInfo,
     saveTags,
     getTags}) => (
   <Wraper>
@@ -42,7 +42,7 @@ const AppContent = ({
     {loading && !loaded && <Loading />}
     {loaded && <Table starredList={starredList} openModal={openModal} />}
     {loaded && <SearchTag />}
-    {taging && <Modal closeModal={closeModal} repoName={repoName} saveTags={saveTags} getTags={getTags} />}
+    {taging && <Modal closeModal={closeModal} repoInfo={repoInfo} saveTags={saveTags} getTags={getTags} />}
   </Wraper>
 )
 
@@ -57,7 +57,7 @@ AppContent.Proptypes = {
   handleSearch: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
-  repoName: PropTypes.string.isRequired,
+  repoInfo: PropTypes.object.isRequired,
   saveTags: PropTypes.func.isRequired,
   getTags: PropTypes.func.isRequired
 }

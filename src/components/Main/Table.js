@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
@@ -38,32 +38,36 @@ const TableData = styled.table`
   }
 `
 
-const Table = ({openModal, starredList}) => (
-  <TableData>
-    <tbody>
-      <tr>
-        <th>Repository</th>
-        <th>Description</th>
-        <th>Language</th>
-        <th>Tags</th>
-        <th></th>
-      </tr>
-      {starredList.map((repo, index) => (
-        <tr key={index}>
-          <td>
-            <a href={repo.link}>{repo.name}</a>
-          </td>
-          <td>{repo.description}</td>
-          <td>{repo.language}</td>
-          <td></td>
-          <td>
-            <button onClick={openModal} title={repo.name}>edit</button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </TableData>
-)
+class Table extends Component {
+  render() {
+    return (
+      <TableData>
+        <tbody>
+          <tr>
+            <th>Repository</th>
+            <th>Description</th>
+            <th>Language</th>
+            <th>Tags</th>
+            <th></th>
+          </tr>
+          {this.props.starredList.map((repo, index) => (
+            <tr key={index}>
+              <td>
+                <a href={repo.link}>{repo.name}</a>
+              </td>
+              <td>{repo.description}</td>
+              <td>{repo.language}</td>
+              <td>{repo.tags}</td>
+              <td>
+                <button onClick={this.props.openModal} title={repo.name} value={index}>edit</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </TableData>
+    )
+  }
+}
 
 Table.Proptypes = {
   openModal: PropTypes.func.isRequired,

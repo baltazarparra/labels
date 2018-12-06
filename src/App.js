@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import AppContent from './components/App-content'
-import firebase from './services/firebase'
+import db from './services/firebase'
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       loading: false,
       loaded: false,
@@ -13,7 +13,7 @@ class App extends Component {
       userNotFound: false,
       starredList: [],
       dbList: [],
-      repoName: '',
+      repoInfo: {},
       rawTags: ''
     }
   }
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   checkStore = (user) => {
-    firebase.database().ref(`/${user}/`).once('value')
+    db.ref(`/${user}/`).once('value')
       .then((snapshot) => {
         snapshot.val() === null ? this.saveData() : this.feedData()
       })
@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   saveData = () => {
-    let user = this.state.username
+    const user = this.state.username
     fetch(`https://api.github.com/users/${user}/starred`)
     .then(response => response.json())
     .then(response => {
@@ -54,7 +54,7 @@ class App extends Component {
           language: item.language
         }
       })
-      firebase.database().ref(`/${user}/starred`).set(repoList)
+      db.ref(`/${user}/starred`).set(repoList)
       this.setState({ loading: false, loaded: true, starredList: repoList })
     })
     .catch(err => {
@@ -64,30 +64,21 @@ class App extends Component {
   }
 
   feedData = () => {
-    let user = this.state.username
-    firebase.database().ref(`/${user}/starred`).once('value')
+    const user = this.state.username
+    db.ref(`/${user}/starred`).once('value')
     .then((snapshot) => {
       this.setState({ loading: false, loaded: true, starredList: snapshot.val() })
     })
   }
 
   openModal = (e) => {
-    this.setState({taging: true, repoName: e.target.title})
+    this.setState({taging: true, repoInfo: {name: e.target.title, index: e.target.value}})
   }
 
   closeModal = () => {
     this.setState({taging: false})
   }
 
-  saveTags = () => {
-    let tags = this.state.rawTags
-    let tagList = tags.split(/[\s,]+/)
-    let uniqueTags = tagList.filter((item, index) => {
-      return tagList.indexOf(item) >= index
-    })
-    console.log(uniqueTags)
-    this.setState({taging: false})
-  }
 
   getTags = (e) => {
     const input = e.target
@@ -98,6 +89,25 @@ class App extends Component {
         this.setState({rawTags: input.value})
       }, 1400)
     }
+  }
+
+  saveTags = () => {
+    const tags = this.state.rawTags.split(/[\s,]+/)
+    const tagsList = tags.filter((item, index) => {
+      return tags.indexOf(item) >= index
+    })
+    this.sendTags(tagsList)
+    this.setState({taging: false})
+  }
+
+  sendTags = (tagsList) => {
+    const repoIndex = this.state.starredList.findIndex((item) => {
+      return item.name === this.state.repoInfo.name
+    })
+    db.ref(`/${this.state.username}/starred/${repoIndex}`).update({
+      tags: tagsList
+    })
+    this.feedData()
   }
 
   render() {

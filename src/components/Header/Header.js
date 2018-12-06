@@ -13,7 +13,7 @@ const Brand = styled.h1`
   flex: 1;
 `
 
-const Link = styled.a`
+const Link = styled.div`
   flex: 1;
   font-size: 1.4em;
   text-align: right;
@@ -22,7 +22,9 @@ const Link = styled.a`
 const Header = () => (
   <HeaderWraper>
     <Brand>Labels</Brand>
-    <Link href="/">home</Link>
+    <Link>
+      <a href="/">home</a>
+    </Link>
   </HeaderWraper>
 )
 
