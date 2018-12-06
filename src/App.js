@@ -27,35 +27,49 @@ class App extends Component {
     }
   }
 
+  checkStore = (user) => {
+    firebase.database().ref(`/${user}/`).once('value')
+      .then((snapshot) => {
+        snapshot.val() === null ? this.saveData() : this.feedData()
+      })
+  }
+
   handleSearch = (e) => {
     this.setState({loading: true, userNotFound: false})
+    this.checkStore(this.state.username)
+  }
+
+  saveData = () => {
     let user = this.state.username
     fetch(`https://api.github.com/users/${user}/starred`)
-      .then(response => response.json())
-      .then(response => {
-        const repoList = response.map((item) => {
-          return {
-            name: item.name,
-            link: item.html_url,
-            description: item.description,
-            language: item.language
-          }
-        })
-        firebase.database().ref(`/starred/${user}`).set(repoList)
-        this.setState({ loading: false, loaded: true, starredList: repoList })
+    .then(response => response.json())
+    .then(response => {
+      const repoList = response.map((item) => {
+        return {
+          name: item.name,
+          link: item.html_url,
+          description: item.description,
+          language: item.language
+        }
       })
-      .catch(err => {
-        this.setState({loading: false, userNotFound: true, username: ''})
-        console.error(err)}
-      )
+      firebase.database().ref(`/${user}/starred`).set(repoList)
+      this.setState({ loading: false, loaded: true, starredList: repoList })
+    })
+    .catch(err => {
+      this.setState({loading: false, userNotFound: true, username: ''})
+      console.error(err)}
+    )
+  }
+
+  feedData = () => {
+    let user = this.state.username
+    firebase.database().ref(`/${user}/starred`).once('value')
+    .then((snapshot) => {
+      this.setState({ loading: false, loaded: true, starredList: snapshot.val() })
+    })
   }
 
   openModal = () => {
-    let user = this.state.username
-    firebase.database().ref(`/starred/${user}`).once('value')
-      .then((snapshot) => {
-        this.setState({dbList: snapshot.val()})
-      })
     this.setState({taging: true})
   }
 
