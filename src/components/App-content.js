@@ -26,7 +26,10 @@ const AppContent = ({
     getUsername,
     handleSearch,
     openModal,
-    closeModal}) => (
+    closeModal,
+    repoName,
+    saveTags,
+    getTags}) => (
   <Wraper>
     <Header />
     {!loading && !loaded &&
@@ -39,7 +42,7 @@ const AppContent = ({
     {loading && !loaded && <Loading />}
     {loaded && <Table starredList={starredList} openModal={openModal} />}
     {loaded && <SearchTag />}
-    {taging && <Modal closeModal={closeModal} />}
+    {taging && <Modal closeModal={closeModal} repoName={repoName} saveTags={saveTags} getTags={getTags} />}
   </Wraper>
 )
 
@@ -53,7 +56,10 @@ AppContent.Proptypes = {
   starredList: PropTypes.array.isRequired,
   handleSearch: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
+  repoName: PropTypes.string.isRequired,
+  saveTags: PropTypes.func.isRequired,
+  getTags: PropTypes.func.isRequired
 }
 
 export default AppContent

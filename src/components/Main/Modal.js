@@ -56,15 +56,15 @@ const ModalWrapper = styled.div`
   }
 `
 
-const Modal = ({closeModal}) => (
+const Modal = ({closeModal, repoName, saveTags, getTags}) => (
   <ModalWrapper>
     <div>
       <label>
-        edit tag for repositories
-        <input />
+        edit tag for repositories {repoName}
+        <input onChange={getTags} />
       </label>
       <span>
-        <button>Save</button>
+        <button onClick={saveTags}>Save</button>
         <button onClick={closeModal}>Cancel</button>
       </span>
     </div>

@@ -57,7 +57,7 @@ const Table = ({openModal, starredList}) => (
           <td>{repo.language}</td>
           <td></td>
           <td>
-            <button onClick={openModal}>edit</button>
+            <button onClick={openModal} title={repo.name}>edit</button>
           </td>
         </tr>
       ))}

@@ -12,7 +12,9 @@ class App extends Component {
       username: '',
       userNotFound: false,
       starredList: [],
-      dbList: []
+      dbList: [],
+      repoName: '',
+      rawTags: ''
     }
   }
 
@@ -69,12 +71,33 @@ class App extends Component {
     })
   }
 
-  openModal = () => {
-    this.setState({taging: true})
+  openModal = (e) => {
+    this.setState({taging: true, repoName: e.target.title})
   }
 
   closeModal = () => {
     this.setState({taging: false})
+  }
+
+  saveTags = () => {
+    let tags = this.state.rawTags
+    let tagList = tags.split(/[\s,]+/)
+    let uniqueTags = tagList.filter((item, index) => {
+      return tagList.indexOf(item) >= index
+    })
+    console.log(uniqueTags)
+    this.setState({taging: false})
+  }
+
+  getTags = (e) => {
+    const input = e.target
+    let timeout = null
+    input.onkeyup = () => {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        this.setState({rawTags: input.value})
+      }, 1400)
+    }
   }
 
   render() {
@@ -86,6 +109,8 @@ class App extends Component {
           handleSearch={this.handleSearch}
           openModal={this.openModal}
           closeModal={this.closeModal}
+          saveTags={this.saveTags}
+          getTags={this.getTags}
         />
       </div>
     )
