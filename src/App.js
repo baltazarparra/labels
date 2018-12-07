@@ -81,14 +81,11 @@ class App extends Component {
     })
   }
 
-  openModal = (e) => {
+  openModal = (e) =>
     this.setState({taging: true, repoInfo: {name: e.target.title, index: e.target.value}})
-  }
 
-  closeModal = () => {
+  closeModal = () =>
     this.setState({taging: false})
-  }
-
 
   getTags = (e) => {
     const input = e.target
