@@ -26,11 +26,11 @@ const Input = styled.input`
   }
 `
 
-const SearchTag = () => (
+const SearchTag = ({searchTags}) => (
   <Search>
     <Label>
       <span role="img" aria-label="serach icon">🔎</span>
-      <Input placeholder="Search tags" />
+      <Input placeholder="Search tags" onKeyUp={searchTags} />
     </Label>
   </Search>
 )

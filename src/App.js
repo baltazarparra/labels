@@ -110,6 +110,22 @@ class App extends Component {
     this.feedData()
   }
 
+  searchTags = (e) => {
+    const value = e.target.value
+    const keyCode = e.which || e.keyCode
+    const ENTER = 13
+
+    if (keyCode === ENTER) {
+      const list = this.state.starredList.filter((item) => {
+        if (item.tags) {
+          if (item.tags.includes(value)) return true
+        }
+        return null
+      })
+      value ? this.setState({starredList: list}) : this.feedData()
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -121,6 +137,7 @@ class App extends Component {
           closeModal={this.closeModal}
           saveTags={this.saveTags}
           getTags={this.getTags}
+          searchTags={this.searchTags}
         />
       </div>
     )
