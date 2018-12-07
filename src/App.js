@@ -45,9 +45,11 @@ class App extends Component {
     this.checkStore(this.state.username)
   }
 
+  callAPI = () =>
+    fetch(`https://api.github.com/users/${this.state.username}/starred`)
+
   saveData = () => {
-    const user = this.state.username
-    fetch(`https://api.github.com/users/${user}/starred`)
+    this.callAPI()
     .then(response => response.json())
     .then(response => {
       const repoList = response.map((item) => {
@@ -58,13 +60,17 @@ class App extends Component {
           language: item.language
         }
       })
-      db.ref(`/${user}/starred`).set(repoList)
-      this.setState({ loading: false, loaded: true, starredList: repoList })
+      this.sendData(repoList)
     })
     .catch(err => {
       this.setState({loading: false, userNotFound: true, username: ''})
       console.error(err)}
     )
+  }
+
+  sendData = (repoList) => {
+    this.setState({ loading: false, loaded: true, starredList: repoList })
+    return db.ref(`/${this.state.username}/starred`).set(repoList)
   }
 
   feedData = () => {
