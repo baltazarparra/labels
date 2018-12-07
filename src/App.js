@@ -21,6 +21,10 @@ class App extends Component {
   getUsername = (e) => {
     const input = e.target
     let timeout = null
+    return this.setUsername(input, timeout)
+  }
+
+  setUsername = (input, timeout) => {
     input.onkeyup = () => {
       clearTimeout(timeout)
       timeout = setTimeout(() => {
