@@ -23,7 +23,7 @@ const Header = () => (
   <HeaderWraper>
     <Brand>Labels</Brand>
     <Link>
-      <a href="/">home</a>
+      <a href="https://baltazarparra.github.io/labels/">home</a>
     </Link>
   </HeaderWraper>
 )
