@@ -86,7 +86,6 @@ class App extends Component {
     input.onkeyup = () => {
       clearTimeout(timeout)
       timeout = setTimeout(() => {
-        console.log('get', input.value)
         this.setState({rawTags: input.value})
       }, 400)
     }
@@ -98,7 +97,6 @@ class App extends Component {
       return tags.indexOf(item) >= index
     })
     this.sendTags(tagsList)
-    console.log('save', tagsList)
     this.setState({taging: false})
   }
 
@@ -106,7 +104,6 @@ class App extends Component {
     const repoIndex = this.state.starredList.findIndex((item) => {
       return item.name === this.state.repoInfo.name
     })
-    console.log('send', tagsList)
     db.ref(`/${this.state.username}/starred/${repoIndex}`).update({
       tags: tagsList
     })
