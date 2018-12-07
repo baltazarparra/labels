@@ -29,7 +29,7 @@ class App extends Component {
       clearTimeout(timeout)
       timeout = setTimeout(() => {
         this.setState({username: input.value})
-      }, 1400)
+      }, 1000)
     }
   }
 
@@ -50,22 +50,22 @@ class App extends Component {
 
   saveData = () => {
     this.callAPI()
-    .then(response => response.json())
-    .then(response => {
-      const repoList = response.map((item) => {
-        return {
-          name: item.name,
-          link: item.html_url,
-          description: item.description,
-          language: item.language
-        }
-      })
+      .then(response => response.json())
+      .then(response => {
+        const repoList = response.map((item) => {
+          return {
+            name: item.name,
+            link: item.html_url,
+            description: item.description,
+            language: item.language
+          }
+        })
       this.sendData(repoList)
     })
     .catch(err => {
       this.setState({loading: false, userNotFound: true, username: ''})
-      console.error(err)}
-    )
+      console.error(err)
+    })
   }
 
   sendData = (repoList) => {
@@ -124,7 +124,10 @@ class App extends Component {
     const value = e.target.value
     const keyCode = e.which || e.keyCode
     const ENTER = 13
+    this.returnSearch(value, keyCode, ENTER)
+  }
 
+  returnSearch = (value, keyCode, ENTER) => {
     if (keyCode === ENTER) {
       const list = this.state.starredList.filter((item) => {
         if (item.tags) {
