@@ -12,7 +12,7 @@ const ModalWrapper = styled.div`
   height: 100vh;
   background-color: rgba(0,0,0,.5);
 
-  div {
+  form {
     display: flex;
     flex-direction: column;
     padding: .4em 1em;
@@ -60,7 +60,7 @@ const ModalWrapper = styled.div`
 
 const Modal = ({closeModal, repoInfo, saveTags, getTags}) => (
   <ModalWrapper>
-    <div>
+    <form onSubmit={saveTags}>
       <label>
         edit tag for repositories {repoInfo.name}
         <input onChange={getTags} />
@@ -69,7 +69,7 @@ const Modal = ({closeModal, repoInfo, saveTags, getTags}) => (
         <button onClick={saveTags}>Save</button>
         <button onClick={closeModal}>Cancel</button>
       </span>
-    </div>
+    </form>
   </ModalWrapper>
 )
 

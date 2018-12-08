@@ -11,7 +11,10 @@ const TableData = styled.table`
   text-align: left;
   border-radius: 6px 4px 9px 4px/110px 95px 115px 5px;
   border:solid 4px #41403E;
-  overflow-x: scroll;
+
+  @media (max-width: 600px) {
+    overflow-x: scroll;
+  }
 
   tr:first-child {
     background-color: #ccc;
