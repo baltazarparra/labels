@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Search = styled.div`
   display: block;
@@ -48,5 +49,11 @@ const SearchTag = ({searchTags, clearSearch, clearTable}) => (
     {clearSearch && <Button onClick={clearTable}>clear</Button>}
   </Search>
 )
+
+SearchTag.Proptypes = {
+  searchTags: PropTypes.func.isRequired,
+  clearSearch: PropTypes.bool.isRequired,
+  clearTable: PropTypes.func.isRequired
+}
 
 export default SearchTag

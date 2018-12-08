@@ -6,7 +6,7 @@ import Loading from './Main/Loading'
 import Table from './Main/Table'
 import Modal from './Main/Modal'
 import styled from 'styled-components'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const Wraper = styled.div`
   min-height: 100vh;
@@ -31,7 +31,9 @@ const AppContent = ({
     clearTable}) => (
   <Wraper>
     <Header />
-    {loaded && <SearchTag searchTags={searchTags} clearSearch={clearSearch} clearTable={clearTable} />}
+    {loaded &&
+      <SearchTag searchTags={searchTags} clearSearch={clearSearch} clearTable={clearTable}
+    />}
     {!loading && !loaded &&
     <Main
       username={username}
@@ -58,7 +60,10 @@ AppContent.Proptypes = {
   closeModal: PropTypes.func.isRequired,
   repoInfo: PropTypes.object.isRequired,
   saveTags: PropTypes.func.isRequired,
-  getTags: PropTypes.func.isRequired
+  getTags: PropTypes.func.isRequired,
+  searchTags: PropTypes.func.isRequired,
+  clearSearch: PropTypes.bool.isRequired,
+  clearTable: PropTypes.func.isRequired
 }
 
 export default AppContent
