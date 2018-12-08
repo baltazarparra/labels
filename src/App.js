@@ -15,7 +15,8 @@ class App extends Component {
       starredList: [],
       dbList: [],
       repoInfo: {},
-      rawTags: ''
+      rawTags: '',
+      clearSearch: false
     }
   }
 
@@ -124,8 +125,13 @@ class App extends Component {
         }
         return null
       })
-      value ? this.setState({starredList: list}) : this.feedData()
+      value ? this.setState({clearSearch: true, starredList: list}) : this.feedData()
     }
+  }
+
+  clearTable = () => {
+    this.feedData()
+    this.setState({clearSearch: false})
   }
 
   render() {
@@ -140,6 +146,7 @@ class App extends Component {
           saveTags={this.saveTags}
           getTags={this.getTags}
           searchTags={this.searchTags}
+          clearTable={this.clearTable}
         />
       </div>
     )

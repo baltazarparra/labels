@@ -26,12 +26,25 @@ const Input = styled.input`
   }
 `
 
-const SearchTag = ({searchTags}) => (
+const Button = styled.button`
+  margin-left: 1em;
+  font-size: 1.2em;
+  background: silver;
+  padding: .4em;
+  border: solid 2px;
+  border-radius: 26px 28px 38px 36px;
+  &:focus {
+    outline: 0;
+  }
+`
+
+const SearchTag = ({searchTags, clearSearch, clearTable}) => (
   <Search>
     <Label>
       <span role="img" aria-label="serach icon">🔎</span>
       <Input placeholder="Search tags" onKeyUp={searchTags} />
     </Label>
+    {clearSearch && <Button onClick={clearTable}>clear</Button>}
   </Search>
 )
 

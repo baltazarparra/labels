@@ -30,10 +30,12 @@ const AppContent = ({
     repoInfo,
     saveTags,
     getTags,
-    searchTags}) => (
+    searchTags,
+    clearSearch,
+    clearTable}) => (
   <Wraper>
     <Header />
-    {loaded && <SearchTag searchTags={searchTags} />}
+    {loaded && <SearchTag searchTags={searchTags} clearSearch={clearSearch} clearTable={clearTable} />}
     {!loading && !loaded &&
     <Main
       username={username}
