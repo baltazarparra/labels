@@ -3,12 +3,15 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const TableData = styled.table`
+  display: block;
+  max-width: 90%;
   margin: 3em 2em;
   table-layout: fixed;
   font-size: 1.4em;
   text-align: left;
   border-radius: 6px 4px 9px 4px/110px 95px 115px 5px;
   border:solid 4px #41403E;
+  overflow-x: scroll;
 
   tr:first-child {
     background-color: #ccc;

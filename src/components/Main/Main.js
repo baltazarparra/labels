@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const MainWraper = styled.main`
   flex: 1;
   font-size: 1.4em;
+  text-align: center;
 `
 
 const Warning = styled.p`

@@ -20,11 +20,13 @@ const ModalWrapper = styled.div`
     border-radius: 6px 4px 9px 4px/110px 95px 115px 5px;
     border:solid 4px #41403E;
     font-size: 1.4em;
+    max-width: 90%;
   }
 
   input {
     display: block;
     width: 400px;
+    max-width: 100%;
     border-radius: 6px 4px 9px 4px/110px 95px 115px 5px;
     border:solid 2px #41403E;
     margin: .4em 0;

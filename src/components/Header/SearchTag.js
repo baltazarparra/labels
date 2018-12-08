@@ -21,7 +21,6 @@ const Input = styled.input`
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
   &:focus {
-    width: 300px;
     outline: 0;
   }
 `
