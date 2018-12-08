@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const TableData = styled.table`
   display: block;
   max-width: 100%;
-  margin: 3em 2em;
+  margin: 2em 1em;
   table-layout: fixed;
   font-size: 1.4em;
   text-align: left;
@@ -15,6 +15,11 @@ const TableData = styled.table`
   @media (max-width: 600px) {
     overflow-x: scroll;
     max-width: 90%;
+  }
+
+  tbody {
+    display: inline-table;
+    width: 100%;
   }
 
   tr:first-child {

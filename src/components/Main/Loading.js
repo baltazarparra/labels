@@ -11,12 +11,19 @@ const move = keyframes`
 `
 
 const Loader = styled.div`
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  margin: 0 auto;
+  text-align: center;
+
 `
 
 const LoadingBar = styled.span`
   display: block;
-  margin: 1em;
+  margin: 1em auto;
   width: 180px;
   height: 36px;
   box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);

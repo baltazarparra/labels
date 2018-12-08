@@ -3,7 +3,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const MainWraper = styled.main`
-  flex: 1;
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
   font-size: 1.4em;
   text-align: center;
 `

@@ -16,6 +16,7 @@ const Label = styled.label`
 
 const Input = styled.input`
   width: 200px;
+  max-width: 50%;
   padding-left: 4px;
   border: 0;
   font-size: 1.2em;

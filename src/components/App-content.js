@@ -9,10 +9,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const Wraper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   min-height: 100vh;
 `
 
