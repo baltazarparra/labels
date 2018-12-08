@@ -88,7 +88,7 @@ class App extends Component {
     const input = e.target
     input.focus()
     input.onkeyup = () => {
-      this.setState({rawTags: input.value})
+      this.setState({rawTags: input.value.toLowerCase()})
     }
   }
 
@@ -111,7 +111,7 @@ class App extends Component {
   }
 
   searchTags = (e) => {
-    const value = e.target.value
+    const value = e.target.value.toLowerCase()
     const keyCode = e.which || e.keyCode
     const ENTER = 13
     this.returnSearch(value, keyCode, ENTER)
