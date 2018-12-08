@@ -11,6 +11,11 @@ const HeaderWraper = styled.header`
 
 const Brand = styled.h1`
   flex: 1;
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
 `
 
 const Link = styled.div`
@@ -21,7 +26,9 @@ const Link = styled.div`
 
 const Header = () => (
   <HeaderWraper>
-    <Brand>Labels</Brand>
+    <Brand>
+      <a href="https://baltazarparra.github.io/labels/">Labels</a>
+    </Brand>
     <Link>
       <a href="https://baltazarparra.github.io/labels/">home</a>
     </Link>
