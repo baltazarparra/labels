@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AppContent from './components/App-content'
-import db from './services/firebase'
+import database from './services/database'
 import { API } from './services/API'
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   checkStore = (user) => {
-    db.ref(`/${user}/`).once('value')
+    database.listenUserNode(user)
       .then((snapshot) => {
         snapshot.val() === null ? this.saveData() : this.feedData()
       })
@@ -71,15 +71,14 @@ class App extends Component {
 
   sendData = (repoList) => {
     this.setState({ loading: false, loaded: true, starredList: repoList })
-    return db.ref(`/${this.state.username}/starred`).set(repoList)
+    return database.setRepoNode(this.state.username, repoList)
   }
 
   feedData = () => {
-    const user = this.state.username
-    db.ref(`/${user}/starred`).once('value')
-    .then((snapshot) => {
-      this.setState({ loading: false, loaded: true, starredList: snapshot.val() })
-    })
+    database.listenRepoNode(this.state.username)
+      .then((snapshot) => {
+        this.setState({ loading: false, loaded: true, starredList: snapshot.val() })
+      })
   }
 
   openModal = (e) =>
@@ -99,7 +98,8 @@ class App extends Component {
     }
   }
 
-  saveTags = () => {
+  saveTags = (e) => {
+    e.preventDefault()
     const tags = this.state.rawTags.split(/[\s,]+/)
     const tagsList = tags.filter((item, index) => {
       return tags.indexOf(item) >= index
@@ -112,9 +112,7 @@ class App extends Component {
     const repoIndex = this.state.starredList.findIndex((item) => {
       return item.name === this.state.repoInfo.name
     })
-    db.ref(`/${this.state.username}/starred/${repoIndex}`).update({
-      tags: tagsList
-    })
+    database.updateTagsNode(this.state.username, repoIndex, tagsList)
     this.feedData()
   }
 

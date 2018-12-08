@@ -66,7 +66,7 @@ const Modal = ({closeModal, repoInfo, saveTags, getTags}) => (
         <input onChange={getTags} />
       </label>
       <span>
-        <button onClick={saveTags}>Save</button>
+        <button type="submit" onClick={saveTags}>Save</button>
         <button onClick={closeModal}>Cancel</button>
       </span>
     </form>
