@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Search = styled.div`
-  position: absolute;
-  top: 6em;
-  left: 2em;
+  display: block;
+  text-align: left;
+  margin-right: auto;
+  margin-left: 2em;
 `
 
 const Label = styled.label`

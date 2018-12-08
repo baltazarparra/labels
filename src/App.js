@@ -21,16 +21,12 @@ class App extends Component {
 
   getUsername = (e) => {
     const input = e.target
-    let timeout = null
-    return this.setUsername(input, timeout)
+    return this.setUsername(input)
   }
 
-  setUsername = (input, timeout) => {
+  setUsername = (input) => {
     input.onkeyup = () => {
-      clearTimeout(timeout)
-      timeout = setTimeout(() => {
-        this.setState({username: input.value})
-      }, 1000)
+      this.setState({username: input.value})
     }
   }
 
@@ -89,12 +85,9 @@ class App extends Component {
 
   getTags = (e) => {
     const input = e.target
-    let timeout = null
+    input.focus()
     input.onkeyup = () => {
-      clearTimeout(timeout)
-      timeout = setTimeout(() => {
-        this.setState({rawTags: input.value})
-      }, 400)
+      this.setState({rawTags: input.value})
     }
   }
 

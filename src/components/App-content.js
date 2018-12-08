@@ -33,6 +33,7 @@ const AppContent = ({
     searchTags}) => (
   <Wraper>
     <Header />
+    {loaded && <SearchTag searchTags={searchTags} />}
     {!loading && !loaded &&
     <Main
       username={username}
@@ -42,7 +43,6 @@ const AppContent = ({
     />}
     {loading && !loaded && <Loading />}
     {loaded && <Table starredList={starredList} openModal={openModal} />}
-    {loaded && <SearchTag searchTags={searchTags} />}
     {taging && <Modal closeModal={closeModal} repoInfo={repoInfo} saveTags={saveTags} getTags={getTags} />}
   </Wraper>
 )

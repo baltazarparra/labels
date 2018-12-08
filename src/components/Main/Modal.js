@@ -31,6 +31,7 @@ const ModalWrapper = styled.div`
     border:solid 2px #41403E;
     margin: .4em 0;
     height: 30px;
+    font-size: 1em;
     &:focus {
       outline: 0;
     }
@@ -63,7 +64,7 @@ const Modal = ({closeModal, repoInfo, saveTags, getTags}) => (
     <form onSubmit={saveTags}>
       <label>
         edit tag for repositories {repoInfo.name}
-        <input onChange={getTags} />
+        <input autoFocus onChange={getTags} />
       </label>
       <span>
         <button type="submit" onClick={saveTags}>Save</button>

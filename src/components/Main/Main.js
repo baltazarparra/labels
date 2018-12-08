@@ -59,7 +59,7 @@ const Main = ({username, userNotFound, getUsername, handleSearch}) => (
     <form onSubmit={handleSearch}>
       <label>
         https://github.com/
-        <SearchInput onChange={getUsername} placeholder="username" />
+        <SearchInput autoFocus onChange={getUsername} placeholder="username" />
       </label>
       <ActionButton
         type="submit"
