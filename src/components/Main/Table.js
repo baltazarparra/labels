@@ -58,7 +58,7 @@ const Table = ({starredList, openModal}) => (
           </td>
           <td>{repo.description}</td>
           <td>{repo.language}</td>
-          <td>{repo.tags}</td>
+          <td>{repo.tags && repo.tags.join(', ')}</td>
           <td>
             <button onClick={openModal} title={repo.name} value={index}>edit</button>
           </td>

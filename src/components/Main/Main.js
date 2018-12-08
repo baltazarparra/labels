@@ -56,15 +56,17 @@ const ActionButton = styled.button`
 
 const Main = ({username, userNotFound, getUsername, handleSearch}) => (
   <MainWraper>
-    <label>
-      https://github.com/
-      <SearchInput onChange={getUsername} placeholder="username" />
-    </label>
-    <ActionButton
-      disabled={!username}
-      onClick={handleSearch}>
-      get repositories ▸
-    </ActionButton>
+    <form onSubmit={handleSearch}>
+      <label>
+        https://github.com/
+        <SearchInput onChange={getUsername} placeholder="username" />
+      </label>
+      <ActionButton
+        disabled={!username}
+       >
+        get repositories ▸
+      </ActionButton>
+    </form>
     {userNotFound &&
       <Warning>
         User not found, check and try again
