@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AppContent from './components/App-content'
 import db from './services/firebase'
+import { API } from './services/API'
 
 class App extends Component {
   constructor(props) {
@@ -41,15 +42,15 @@ class App extends Component {
   }
 
   handleSearch = (e) => {
+    e.preventDefault()
     this.setState({loading: true, userNotFound: false})
     this.checkStore(this.state.username)
   }
 
-  callAPI = () =>
-    fetch(`https://api.github.com/users/${this.state.username}/starred`)
+  callAPI = (user) => API(user)
 
   saveData = () => {
-    this.callAPI()
+    this.callAPI(this.state.username)
       .then(response => response.json())
       .then(response => {
         const repoList = response.map((item) => {

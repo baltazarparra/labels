@@ -62,6 +62,7 @@ const Main = ({username, userNotFound, getUsername, handleSearch}) => (
         <SearchInput onChange={getUsername} placeholder="username" />
       </label>
       <ActionButton
+        type="submit"
         disabled={!username}
        >
         get repositories ▸
