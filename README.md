@@ -6,6 +6,8 @@
 
 `cd labels`
 
+### `npm i`
+
 Para iniciar o app digite:
 
 ### `npm start`
