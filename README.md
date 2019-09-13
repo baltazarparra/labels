@@ -5,6 +5,7 @@
 `git clone https://github.com/baltazarparra/labels`
 
 `cd labels`
+_________________________________________
 
 ### `npm i`
 
