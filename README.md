@@ -17,7 +17,3 @@ A página vai recarregar se fizer alguma edição
 ### `npm test`
 
 Roda os testes de componentes
-
-### `npm run build`
-
-Realiza a build do app
