@@ -1,5 +1,11 @@
 # Labels
 
+## Start
+
+`git clone https://github.com/baltazarparra/labels`
+
+`cd labels`
+
 Para iniciar o app digite:
 
 ### `npm start`
